@@ -1,3 +1,3 @@
 export default getInfoProducts = () => {
-  fetch().then().then();
+  return fetch().then().then();
 };

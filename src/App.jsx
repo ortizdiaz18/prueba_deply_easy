@@ -1,10 +1,24 @@
 import { useState } from 'react'
+import {useSelector,useDispatch} from 'react-redux'
 import reactLogo from './assets/react.svg'
 import './App.css'
-
+import { useEffect } from 'react'
+import {getPedidos} from './features/pedidos/pedidosSlice'
+import getInfoProducts from './conectionServer/getInfoProducts'
 function App() {
   const [count, setCount] = useState(0)
+  const dispatch = useDispatch()
+  const statePedidos = useSelector((state) => state.pedidos.pedidos)
+  const stateProducts = useSelector((state) => state.products.productos)
 
+  useEffect( ()=>{
+    const getProducts = async () =>{
+       let products= await getInfoProducts()
+       dispatch(getPedidos(products))
+    } ;
+
+    getProducts()
+  },[])
   return (
     <div className="App">
       <div>
