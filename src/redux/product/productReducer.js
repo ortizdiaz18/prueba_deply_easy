@@ -1,4 +1,4 @@
-import * as actions from "./actions";
+import * as types from "../types";
 
 const initialState = {
   products: [],
@@ -8,6 +8,69 @@ const initialState = {
 
 export const productReducer = (state = initialState, action) => {
   switch (action.type) {
+    case types.GET_PRODUCTS:
+      return {
+        ...state,
+        products: action.payload,
+      };
+
+    case types.GET_PRODUCT_BY_ID:
+      return {
+        ...state,
+        detailProduct: action.payload,
+      };
+
+    case types.GET_PRODUCTS_BY_NAME:
+      return {
+        ...state,
+        products: action.payload,
+      };
+
+    case types.POST_PRODUCT:
+      return {
+        ...state,
+      };
+
+    case types.UPDATE_PRODUCT:
+      return {
+        ...state,
+      };
+
+    case types.DELETE_PRODUCT:
+      return {
+        ...state,
+      };
+
+    case types.SORT_BY_SCORE:
+      return {
+        ...state,
+        products: action.payload,
+      };
+
+    case types.SORT_BY_PRICE:
+      return {
+        ...state,
+        products: action.payload,
+      };
+
+    case types.SORT_BY_TIME:
+      return {
+        ...state,
+        products: action.payload,
+      };
+
+    case types.FILTER_BY_DIET:
+      return {
+        ...state,
+        products: action.payload,
+      };
+
+    case types.FILTER_BY_CATEGORY:
+      return {
+        ...state,
+        products: action.payload,
+      };
+
     default:
       return state;
   }

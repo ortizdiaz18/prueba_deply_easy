@@ -5,7 +5,7 @@ import { productReducer } from "../product/productReducer";
 
 const store = createStore(
   combineReducers({
-    productReducer,
+    products: productReducer,
   }),
   composeWithDevTools(applyMiddleware(thunk))
 );
