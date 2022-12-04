@@ -4,3 +4,4 @@ export * from "./Home";
 export * from "./Cards";
 export * from "./Cart";
 export * from "./Details";
+export * from "./NavBar";
