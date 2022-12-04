@@ -10,7 +10,7 @@ export const SORT_BY_PRICE = "SORT_BY_PRICE";
 export const SORT_BY_TIME = "SORT_BY_TIME";
 export const FILTER_BY_DIET = "FILTER_BY_DIET";
 export const FILTER_BY_CATEGORY = "FILTER_BY_CATEGORY";
-
+export const GET_CATEGORIES = "GET_CATEGORIES";
 //Users
 
 //Reservations

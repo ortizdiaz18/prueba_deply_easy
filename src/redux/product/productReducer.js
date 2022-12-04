@@ -65,12 +65,6 @@ export const productReducer = (state = initialState, action) => {
         products: action.payload,
       };
 
-    case types.FILTER_BY_CATEGORY:
-      return {
-        ...state,
-        products: action.payload,
-      };
-
     default:
       return state;
   }
