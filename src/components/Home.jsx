@@ -10,16 +10,20 @@ export const Home = () => {
 
   return (
     <div>
+      
       <div>
         <NavBar />
       </div>
       {products.length >= 1 ? (
         <ResultSearch />
       ) : (
+       
         <div className={s.home__container}>
+           
           <Link to={"/cards"}>
             <div className={`${s.card} ${s.card__entradas}`}>
               <h2>Entradas</h2>
+              
             </div>
           </Link>
 

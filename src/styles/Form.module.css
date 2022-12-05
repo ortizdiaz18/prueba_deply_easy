@@ -1,0 +1,55 @@
+html, body, #root, .App{
+    min-height: 100vh !important
+}
+#containerGlobalForm{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.containerForm{
+    width: 100%;
+    height: 70%;
+}
+.form{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+}
+.containerImage{  
+    width: 100%;
+    height: 200px;
+}
+.img{
+    width: 100%;
+    height: 100%;
+}
+.containerInfo{
+    
+    width: 100%;
+    background-image: url('../images/fondo_tablas.jpg');
+    padding: 20px;
+}
+.containerLabel{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    width:100%;
+    margin-top: 10px;
+
+}
+.labels{    
+    color: white;
+    font-size: 12px;
+    font-weight: bold;    
+}
+
+.containerButton{
+    text-align: right;
+    margin-top: 20px;
+}

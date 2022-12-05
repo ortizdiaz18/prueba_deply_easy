@@ -1,8 +1,5 @@
-<<<<<<< HEAD
 import * as actions from "./actions";
-=======
 import * as types from "../types";
->>>>>>> Yorsh355
 
 const initialState = {
   products: [],
@@ -12,8 +9,6 @@ const initialState = {
 
 export const productReducer = (state = initialState, action) => {
   switch (action.type) {
-<<<<<<< HEAD
-=======
     case types.GET_PRODUCTS:
       return {
         ...state,
@@ -72,7 +67,6 @@ export const productReducer = (state = initialState, action) => {
         products: action.payload,
       };
 
->>>>>>> Yorsh355
     default:
       return state;
   }

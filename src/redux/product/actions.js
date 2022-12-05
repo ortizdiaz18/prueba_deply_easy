@@ -17,7 +17,7 @@ export const getProducts = () => {
 export const getProductById = (id) => {
   return (dispatch) =>
     axios
-      .get(`http://localhost:3000/api/v1/product/:${id}`)
+      .get(`http://localhost:3000/api/v1/products/:${id}`)
       .then((response) => {
         dispatch({
           type: types.GET_PRODUCT_BY_ID,
@@ -29,7 +29,7 @@ export const getProductById = (id) => {
 
 export const postProducts = (data) => {
   return axios
-    .post(`http://localhost:3000/api/v1/product`, data)
+    .post(`http://localhost:3000/api/v1/products`, data)
     .then((response) => response)
     .catch((error) => console.log(error));
 };
