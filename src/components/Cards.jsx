@@ -1,10 +1,14 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCategories } from "../redux/categories/actions";
-import { getProducts } from "../redux/product/actions";
+import {
+  getProductByCategory,
+  getProducts,
+  sortByTimePreparation,
+} from "../redux/product/actions";
 import style from "../styles/Cards.module.css";
 import { Card } from "./Card";
-getCategories;
+
 export const Cards = () => {
   const dispatch = useDispatch();
 
@@ -19,36 +23,48 @@ export const Cards = () => {
     dispatch(getCategories());
   }, []);
 
-  console.log("products", products);
-  console.log("categories", categories);
+  function handleSelectCategory(e) {
+    dispatch(getProductByCategory(e.target.value));
+  }
+  function handleSelectOrden(e) {
+    console.log("AAAA", e.target.value);
+    dispatch(sortByTimePreparation(e.target.value));
+  }
 
   return (
     <div>
       <h1>Aquí van a ir la Nav</h1>
 
       <div className={style.cards__container__select}>
-        <select className={style.cards__select}>
-          <option>Populares</option>
+        <select
+          className={style.cards__select}
+          onChange={(e) => handleSelectOrden(e)}
+        >
+          <option>Tiempo de preparación</option>
+          <option value="min-max">Menor a mayor</option>
+          <option value="max-min">Mayor a menor</option>
         </select>
       </div>
-
-      <div className={style.cards__container__select}>
-        <select className={style.cards__select}>
-          <option>Tipos de dietas</option>
+      <div>
+        <select
+          className={style.cards__select}
+          onChange={(e) => handleSelectCategory(e)}
+        >
+          <option>Categorías</option>
+          {categories.length &&
+            categories.map((cat, i) => {
+              return (
+                <option
+                  key={i}
+                  className={style.cards__category}
+                  value={cat.name_c}
+                >
+                  {cat.name_c}
+                </option>
+              );
+            })}
         </select>
       </div>
-
-      {categories.length &&
-        categories.map((category, i) => (
-          <div className={style.cards__category} key={i}>
-            <div>
-              <b>{category.name_c}</b>
-            </div>
-            <div className={style.cards__span}>
-              <span className="material-symbols-outlined">expand_more</span>
-            </div>
-          </div>
-        ))}
 
       <div>
         {products.length &&
@@ -59,11 +75,9 @@ export const Cards = () => {
               name={p.name}
               description={p.description}
               price={p.price}
-              // icon={p.icon}
             />
           ))}
       </div>
-      <Card />
     </div>
   );
 };

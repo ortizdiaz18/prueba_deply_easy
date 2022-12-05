@@ -27,3 +27,11 @@
   width: 20rem;
   font-family: "Comfortaa", cursive;
 }
+
+.cards__button {
+  color: goldenrod;
+  font-family: "Comfortaa", cursive;
+  border: solid 0.5px rgb(70, 69, 69);
+  padding: 0.6rem;
+  border-radius: 1.5rem;
+}

@@ -21,18 +21,41 @@ export const getProductById = (id) => {
       .then((response) => {
         dispatch({
           type: types.GET_PRODUCT_BY_ID,
-          payload: response.data.results,
+          payload: response.data,
         });
       })
       .catch((error) => console.log(error));
 };
 
-export const postProducts = (data) => {
-  return axios
-    .post(`http://localhost:3000/api/v1/product`, data)
-    .then((response) => response)
-    .catch((error) => console.log(error));
+export const getProductByCategory = (category) => {
+  return (dispatch) =>
+    axios
+      .get(
+        `http://localhost:3000/api/v1/products/filterByCategory?category=${category}`
+      )
+      .then((response) => {
+        dispatch({
+          type: types.GET_PRODUCTS_BY_CATEGORY,
+          payload: response.data,
+        });
+      })
+      .catch((error) => console.log(error));
 };
+
+export const sortByTimePreparation = (order) => {
+  console.log("action", order);
+  return {
+    type: types.SORT_BY_TIME_PREPARATION,
+    payload: order,
+  };
+};
+
+// export const postProducts = (data) => {
+//   return axios
+//     .post(`http://localhost:3000/api/v1/product`, data)
+//     .then((response) => response)
+//     .catch((error) => console.log(error));
+// };
 
 // export const updateProducts = (data) => {
 //   return axios
