@@ -1,0 +1,23 @@
+.navbar__container{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.navbar__content{
+    display: flex;
+    justify-items: space-between;
+}
+.navbar__allcontent{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.navbar__icons{
+    height: 38%;
+}
+.logo{
+    display: flex;
+    justify-content: flex-start;
+}
