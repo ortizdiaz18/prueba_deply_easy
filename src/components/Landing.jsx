@@ -111,9 +111,15 @@ export function Landing() {
       </div>
 
       <div className="points">
-        <a href="#item1"></a>
-        <a href="#item2">*</a>
-        <a href="#item3">*</a>
+        <a href="#item1">
+          <button class="point" state="active"></button>
+        </a>
+        <a href="#item2">
+          <button class="point"></button>
+        </a>
+        <a href="#item3">
+          <button class="point"></button>
+        </a>
       </div>
 
       <div className="container">
