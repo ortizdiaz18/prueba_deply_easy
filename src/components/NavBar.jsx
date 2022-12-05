@@ -5,13 +5,16 @@ import user from "../images/User.svg";
 import menu from "../images/Menu.svg";
 import { SearchBar } from ".";
 import s from "../styles/NavBar.module.css";
+import { Link } from "react-router-dom";
 
 export const NavBar = () => {
   return (
     <div className={s.navbar__container}>
       <div className={s.navbar__content}>
         <div className={s.logo}>
-          <h5>Easy Orde</h5>
+          <Link to={"/home"}>
+            <h5>Easy Orde</h5>
+          </Link>
         </div>
         <div className={s.navbar__allicons}>
           <img className={s.navbar__icons} src={alert} alt="alert" />

@@ -21,6 +21,7 @@ export const productReducer = (state = initialState, action) => {
       };
 
     case types.GET_PRODUCTS_BY_NAME:
+      console.log(action.payload);
       return {
         ...state,
         products: action.payload,
@@ -60,12 +61,6 @@ export const productReducer = (state = initialState, action) => {
       };
 
     case types.FILTER_BY_DIET:
-      return {
-        ...state,
-        products: action.payload,
-      };
-
-    case types.FILTER_BY_CATEGORY:
       return {
         ...state,
         products: action.payload,
