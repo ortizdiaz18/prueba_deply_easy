@@ -1,0 +1,55 @@
+/* html{
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+*,*:before, *:after{
+    box-sizing: inherit;
+}
+body{
+    font-size: 16px; 
+}
+
+h2{
+    font-size: 1.5rem;
+} */
+
+.home__container{
+    padding: 0;
+    margin: 0;
+}
+.card{
+    width: 100%;
+    height: 16rem;
+    color: white;
+    font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+    display: flex;
+    justify-content: end;
+    align-items: flex-end;
+    padding: 1rem 2rem;
+    margin-bottom: 1.6rem;
+}
+
+.card__entradas{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(../images/Entrada.png);
+    background-size: cover;
+}
+.card__ensaladas{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(../images/Ensaladas.png);
+    background-size: cover;
+}
+.card__sopas{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(../images/Sopas.png);
+    background-size: cover;
+}
+.card__principales{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(../images/Principales.png);
+    background-size: cover;
+}
+.card__bebidas{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(../images/Bebidas.png);
+    background-size: cover;
+}
+.card__postres{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(../images/Postres.png);
+    background-size: cover;
+}
