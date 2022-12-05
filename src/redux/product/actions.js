@@ -1,6 +1,4 @@
 import * as types from "../types";
-<<<<<<< HEAD
-=======
 import axios from "axios";
 
 export const getProducts = () => {
@@ -50,4 +48,3 @@ export const getProductByName = (name) => {
       })
       .catch((error) => console.log(error));
 };
->>>>>>> Yorsh355
