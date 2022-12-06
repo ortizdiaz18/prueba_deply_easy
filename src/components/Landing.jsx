@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 /* import s from "./Landing.module.css"; */
 import "../styles/Landing.css";
@@ -13,7 +14,7 @@ import "../styles/Landing.css";
 } */
 
 export function Landing() {
-  return (
+   return (
     <div className="root">
       <div className="carrousel">
         <div className="item" id="item1">
