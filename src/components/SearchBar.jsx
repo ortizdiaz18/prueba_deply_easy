@@ -26,17 +26,17 @@ export const SearchBar = () => {
   };
   return (
     <div className={s.container_search}>
-      <form onSubmit={handleSubmit}>
+      <form className={s.container} onSubmit={handleSubmit}>
         <input
           className={s.input}
           type="text"
           name="search"
-          placeholder=""
+          placeholder="Buscar un plato"
           value={input}
           onChange={handleChange}
         />
         <button className={s.btn} type="submit">
-          <img src={search} alt="search" />
+          <span className="material-symbols-outlined">search</span>
         </button>
       </form>
     </div>

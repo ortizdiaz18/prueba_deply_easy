@@ -1,26 +1,25 @@
-.navbarallicons {
-  height: 10%;
-  display: flex;
-  justify-content: end;
-}
 .navbar__container {
   width: 100%;
-  height: 50%;
+  height: 0%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 2rem 2rem 1rem;
 }
+
 .navbar__content {
+  width: 100%;
   display: flex;
-  justify-items: space-between;
+  justify-content: space-between;
+  padding-bottom: 2rem;
 }
 .navbar__allcontent {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.navbaricons {
-  height: 10%;
+span {
+  color: var(--text-color);
 }
 .logo {
   display: flex;
