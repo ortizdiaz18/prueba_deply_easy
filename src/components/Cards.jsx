@@ -33,7 +33,7 @@ export const Cards = () => {
     console.log("AAAA", e.target.value);
     dispatch(actionsProducts.sortByTimePreparation(e.target.value));
   }
-  if (products.length >0) {
+  if (products.length > 0) {
     return (
       <div>
         <div>
@@ -49,6 +49,7 @@ export const Cards = () => {
             <option value="max-min">Mayor a menor</option>
           </select>
         </div>
+        <br />
         <div>
           <select
             className={style.cards__select}
