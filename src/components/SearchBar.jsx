@@ -27,14 +27,16 @@ export const SearchBar = () => {
   return (
     <div className={s.container_search}>
       <form className={s.container} onSubmit={handleSubmit}>
-        <input
-          className={s.input}
-          type="text"
-          name="search"
-          placeholder="Buscar un plato"
-          value={input}
-          onChange={handleChange}
-        />
+        <div className={s.containerInput}>
+          <input
+            className={s.input}
+            type="text"
+            name="search"
+            placeholder="Buscar un plato"
+            value={input}
+            onChange={handleChange}
+          />
+        </div>
         <button className={s.btn} type="submit">
           <span className="material-symbols-outlined">search</span>
         </button>

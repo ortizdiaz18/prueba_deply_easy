@@ -85,7 +85,7 @@ export const CreateProduct = () => {
 
   return (
     <div id={styleForm.containerGlobalForm}>
-      <div>
+      <div className={styleForm.containerNav}>
         <NavBar />
       </div>
       <div className={styleForm.containerForm}>

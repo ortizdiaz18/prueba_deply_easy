@@ -1,8 +1,16 @@
-input{
+.input{
+    height: 100% !important;
     background-color: var(--light-color);
     border: none;
+    border-radius: 0;
     border-end-start-radius: 2rem;
     border-start-start-radius: 2rem;
+    
+}
+.containerInput{
+    height: 100%;
+    width: 100%;
+    
 }
 .btn{
     border: none;
@@ -10,11 +18,15 @@ input{
     background-color: var(--light-color);
     border-end-end-radius: 20rem;
     border-start-end-radius: 20rem;
+    height: 100%;
+
 }
 
 .container{
     display: flex;
+    align-items: center;
     padding: .6rem;
+    height: 4rem;
 }
 
 ::placeholder {
@@ -24,5 +36,6 @@ input{
     line-height: 2.4rem;
     font-weight: 700;
     text-align: center;
+    height: 100%;
 
   }
