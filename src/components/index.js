@@ -6,3 +6,5 @@ export * from "./Cart";
 export * from "./Details";
 export * from "./NavBar";
 export * from "./Card";
+export * from "./ResultSearch";
+export * from "./SearchBar";

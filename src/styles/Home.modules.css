@@ -1,19 +1,21 @@
-/* html{
-    box-sizing: border-box;
-    font-size: 62.5%;
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
 }
-*,*:before, *:after{
-    box-sizing: inherit;
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
 }
-body{
-    font-size: 16px; 
+body {
+  font-size: 16px;
 }
 
-h2{
-    font-size: 1.5rem;
-} */
+h2 {
+  font-size: 1.5rem;
+}
 
-.home__container {
+.homecontainer {
   padding: 0;
   margin: 0;
 }
@@ -29,33 +31,33 @@ h2{
   margin-bottom: 1.6rem;
 }
 
-.card__entradas {
+.cardentradas {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("../images/Entrada.png");
+    url(../images/Entrada.png);
   background-size: cover;
 }
-.card__ensaladas {
+.cardensaladas {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("../images/Ensaladas.png");
+    url(../images/Ensaladas.png);
   background-size: cover;
 }
-.card__sopas {
+.cardsopas {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("../images/Sopas.png");
+    url(../images/Sopas.png);
   background-size: cover;
 }
-.card__principales {
+.cardprincipales {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("../images/Principales.png");
+    url(../images/Principales.png);
   background-size: cover;
 }
-.card__bebidas {
+.cardbebidas {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("../images/Bebidas.png");
+    url(../images/Bebidas.png);
   background-size: cover;
 }
 .card__postres {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("../images/Postres.png");
+    url(../images/Postres.png);
   background-size: cover;
 }

@@ -14,19 +14,6 @@ export const getProducts = () => {
       .catch((error) => console.log(error));
 };
 
-export const getProductById = (id) => {
-  return (dispatch) =>
-    axios
-      .get(`http://localhost:3000/api/v1/product/:${id}`)
-      .then((response) => {
-        dispatch({
-          type: types.GET_PRODUCT_BY_ID,
-          payload: response.data,
-        });
-      })
-      .catch((error) => console.log(error));
-};
-
 export const getProductByCategory = (category) => {
   return (dispatch) =>
     axios
@@ -50,75 +37,34 @@ export const sortByTimePreparation = (order) => {
   };
 };
 
-// export const postProducts = (data) => {
-//   return axios
-//     .post(`http://localhost:3000/api/v1/product`, data)
-//     .then((response) => response)
-//     .catch((error) => console.log(error));
-// };
+export const getProductByName = (name) => {
+  console.log(name);
+  return (dispatch) =>
+    axios
+      .get(`http://localhost:3000/api/v1/products?name=${name}`)
+      .then((response) => {
+        console.log(response.data);
+        dispatch({
+          type: types.GET_PRODUCTS_BY_NAME,
+          payload: response.data,
+        });
+      })
+      .catch((error) => console.log(error));
+};
 
-// export const updateProducts = (data) => {
-//   return axios
-//     .put(`URL/`, data)
-//     .then((response) => response)
-//     .catch((error) => console.log(error));
-// };
-
-// export const deleteProduct = (id) => {
-//   return axios
-//     .delete(`URL/${id}`)
-//     .then((response) => response)
-//     .catch((error) => console.log(error));
-// };
-
-// export const sortByScore = (score) => {
-//   return (dispatch) =>
-//     axios
-//       .get(`URL/${score}`)
-//       .then((response) => {
-//         dispatch({
-//           type: types.SORT_BY_SCORE,
-//           payload: response.data,
-//         });
-//       })
-//       .catch((error) => console.log(error));
-// };
-
-// export const sortByPrice = (price) => {
-//   return (dispatch) =>
-//     axios
-//       .get(`URL/${price}`)
-//       .then((response) => {
-//         dispatch({
-//           type: types.SORT_BY_PRICE,
-//           payload: response.data,
-//         });
-//       })
-//       .catch((error) => console.log(error));
-// };
-
-// export const sortBytime = (time) => {
-//   return (dispatch) =>
-//     axios
-//       .get(`URL/${time}`)
-//       .then((response) => {
-//         dispatch({
-//           type: types.SORT_BY_TIME,
-//           payload: response.data,
-//         });
-//       })
-//       .catch((error) => console.log(error));
-// };
-
-// export const filterByDiet = (diet) => {
-//   return (dispatch) =>
-//     axios
-//       .get(`URL/${diet}`)
-//       .then((response) => {
-//         dispatch({
-//           type: types.FILTER_BY_DIET,
-//           payload: response.data,
-//         });
-//       })
-//       .catch((error) => console.log(error));
-// };
+export const filterByCategory = (category) => {
+  console.log(category);
+  return (dispatch) =>
+    axios
+      .get(
+        `http://localhost:3000/api/v1//products/filterByCategory?category=${category}`
+      )
+      .then((response) => {
+        console.log(response.data);
+        dispatch({
+          type: types.FILTER_BY_CATEGORY,
+          payload: response.data,
+        });
+      })
+      .catch((error) => console.log(error));
+};

@@ -1,40 +1,44 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getCategories } from "../redux/categories/actions";
-import {
-  getProductByCategory,
-  getProducts,
-  sortByTimePreparation,
-} from "../redux/product/actions";
+import { useParams } from "react-router-dom";
+import * as actionsCategory from "../redux/categories/actions";
+import * as actionsProducts from "../redux/product/actions";
+
 import style from "../styles/Cards.module.css";
-import { Card } from "./Card";
+import { Card, NavBar } from ".";
 
 export const Cards = () => {
   const dispatch = useDispatch();
+  const { category } = useParams();
 
   const { products } = useSelector((state) => state.products);
   const { categories } = useSelector((state) => state.categories);
 
   useEffect(() => {
-    dispatch(getProducts());
+    dispatch(actionsProducts.getProducts());
   }, []);
 
   useEffect(() => {
-    dispatch(getCategories());
+    dispatch(actionsCategory.getCategories());
+  }, []);
+
+  useEffect(() => {
+    dispatch(actionsProducts.filterByCategory(category));
   }, []);
 
   function handleSelectCategory(e) {
-    dispatch(getProductByCategory(e.target.value));
+    dispatch(actionsProducts.getProductByCategory(e.target.value));
   }
   function handleSelectOrden(e) {
     console.log("AAAA", e.target.value);
-    dispatch(sortByTimePreparation(e.target.value));
+    dispatch(actionsProducts.sortByTimePreparation(e.target.value));
   }
 
   return (
     <div>
-      <h1>Aquí van a ir la Nav</h1>
-
+      <div>
+        <NavBar />
+      </div>
       <div className={style.cards__container__select}>
         <select
           className={style.cards__select}
@@ -71,7 +75,7 @@ export const Cards = () => {
           products.map((p) => (
             <Card
               key={p.id}
-              image={p.image}
+              // image={p.image}
               name={p.name}
               description={p.description}
               price={p.price}

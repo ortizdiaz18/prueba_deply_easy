@@ -1,11 +1,17 @@
 import React from "react";
 import style from "../styles/Card.module.css";
 
-export const Card = ({ image, name, price }) => {
+export const Card = ({ name, price }) => {
   return (
     <div className={style.card__container}>
       <div>
-        <img className={style.card__img} src={image} alt="plato" />
+        <img
+          className={style.card__img}
+          src={
+            "https://statics-cuidateplus.marca.com/cms/styles/natural/azblob/2022-09/plato-unico.jpg.webp?itok=0ZB-bG3S"
+          }
+          alt="plato"
+        />
       </div>
 
       <div className={style.card__all__info}>
