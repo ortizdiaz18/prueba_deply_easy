@@ -2,13 +2,13 @@ import React from "react";
 import s from "./Pagination.module.css";
 
 export default function Pagination({
-  recipesPerPage,
-  recipes,
+  foodsPerPage,
+  food,
   paginate,
   currentPage,
 }) {
   const pageNumbers = [];
-  for (let i = 1; i <= Math.ceil(recipes / recipesPerPage); i++) {
+  for (let i = 1; i <= Math.ceil(food / foodsPerPage); i++) {
     pageNumbers.push(i);
   }
   return (
