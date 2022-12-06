@@ -1,0 +1,28 @@
+input{
+    background-color: var(--light-color);
+    border: none;
+    border-end-start-radius: 2rem;
+    border-start-start-radius: 2rem;
+}
+.btn{
+    border: none;
+    padding: .2rem;
+    background-color: var(--light-color);
+    border-end-end-radius: 20rem;
+    border-start-end-radius: 20rem;
+}
+
+.container{
+    display: flex;
+    padding: .6rem;
+}
+
+::placeholder {
+    color: var(--text-color);
+    font-family: 'Comfortaa', cursive;
+    font-size: 1.2rem;
+    line-height: 2.4rem;
+    font-weight: 700;
+    text-align: center;
+
+  }
