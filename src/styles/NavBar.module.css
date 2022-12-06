@@ -1,23 +1,28 @@
-.navbar__container{
-    width: 100%;
-    height: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.navbarallicons {
+  height: 10%;
+  display: flex;
+  justify-content: end;
 }
-.navbar__content{
-    display: flex;
-    justify-items: space-between;
+.navbar__container {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.navbar__allcontent{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.navbar__content {
+  display: flex;
+  justify-items: space-between;
 }
-.navbar__icons{
-    height: 38%;
+.navbar__allcontent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.logo{
-    display: flex;
-    justify-content: flex-start;
+.navbaricons {
+  height: 10%;
+}
+.logo {
+  display: flex;
+  justify-content: flex-start;
 }

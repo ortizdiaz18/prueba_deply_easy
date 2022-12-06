@@ -1,5 +1,5 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { Card, NavBar } from ".";
 
 export const ResultSearch = () => {
@@ -8,13 +8,17 @@ export const ResultSearch = () => {
 
   return (
     <div>
-      {/*{" "}
       <div>
         <NavBar />
-      </div>{" "}
-  */}
+      </div>
       {products.map((s) => (
-        <Card key={s.id} id={s.id} img={s.img} name={s.name} price={s.price} />
+        <Card
+          key={s.id}
+          id={s.id}
+          img={s.image}
+          name={s.name}
+          price={s.price}
+        />
       ))}
     </div>
   );

@@ -25,6 +25,8 @@
   justify-content: space-evenly;
   align-items: flex-start;
   margin-left: 1rem;
+  font-size: 1rem;
+  text-align: left;
 }
 
 .card__description__A {
@@ -39,15 +41,22 @@
   text-align: left;
 }
 
-.card__description__C {
+.card_description_C {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 8rem;
+  width: 100%;
   height: 6rem;
   padding: 0.2rem;
   padding-top: 0.5rem;
   font-family: "Comfortaa", cursive;
   margin-right: 1rem;
   color: goldenrod;
+  font-size: 1rem;
+  text-align: right;
+
+}
+
+h4{
+  width: 100%;
 }

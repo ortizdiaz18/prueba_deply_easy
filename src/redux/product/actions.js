@@ -4,7 +4,7 @@ import axios from "axios";
 export const getProducts = () => {
   return (dispatch) =>
     axios
-      .get("http://localhost:3000/api/v1/products")
+      .get(`http://localhost:3000/api/v1/products`)
       .then((response) => {
         dispatch({
           type: types.GET_PRODUCTS,
@@ -14,24 +14,27 @@ export const getProducts = () => {
       .catch((error) => console.log(error));
 };
 
-export const getProductById = (id) => {
+export const getProductByCategory = (category) => {
   return (dispatch) =>
     axios
-      .get(`http://localhost:3000/api/v1/products/:${id}`)
+      .get(
+        `http://localhost:3000/api/v1/products/filterByCategory?category=${category}`
+      )
       .then((response) => {
         dispatch({
-          type: types.GET_PRODUCT_BY_ID,
-          payload: response.data.results,
+          type: types.GET_PRODUCTS_BY_CATEGORY,
+          payload: response.data,
         });
       })
       .catch((error) => console.log(error));
 };
 
-export const postProducts = (data) => {
-  return axios
-    .post(`http://localhost:3000/api/v1/products`, data)
-    .then((response) => response)
-    .catch((error) => console.log(error));
+export const sortByTimePreparation = (order) => {
+  console.log("action", order);
+  return {
+    type: types.SORT_BY_TIME_PREPARATION,
+    payload: order,
+  };
 };
 
 export const getProductByName = (name) => {
@@ -43,6 +46,23 @@ export const getProductByName = (name) => {
         console.log(response.data);
         dispatch({
           type: types.GET_PRODUCTS_BY_NAME,
+          payload: response.data,
+        });
+      })
+      .catch((error) => console.log(error));
+};
+
+export const filterByCategory = (category) => {
+  console.log(category);
+  return (dispatch) =>
+    axios
+      .get(
+        `http://localhost:3000/api/v1//products/filterByCategory?category=${category}`
+      )
+      .then((response) => {
+        console.log(response.data);
+        dispatch({
+          type: types.FILTER_BY_CATEGORY,
           payload: response.data,
         });
       })

@@ -1,8 +1,8 @@
-import * as actions from "./actions";
 import * as types from "../types";
 
 const initialState = {
   products: [],
+  supportProducts: [],
   detailProduct: {},
   changes: false,
 };
@@ -13,12 +13,29 @@ export const productReducer = (state = initialState, action) => {
       return {
         ...state,
         products: action.payload,
+        supportProducts: action.payload,
       };
 
-    case types.GET_PRODUCT_BY_ID:
+    case types.GET_PRODUCTS_BY_CATEGORY:
       return {
         ...state,
-        detailProduct: action.payload,
+        products: action.payload,
+      };
+
+    case types.SORT_BY_TIME_PREPARATION:
+      let orderedProducts = [...state.supportProducts];
+
+      orderedProducts = orderedProducts.sort((a, b) => {
+        if (a.prep_time < b.prep_time)
+          return action.payload === "min-max" ? -1 : 1;
+        if (a.prep_time > b.prep_time)
+          return action.payload === "min-max" ? 1 : -1;
+        return 0;
+      });
+
+      return {
+        ...state,
+        products: orderedProducts,
       };
 
     case types.GET_PRODUCTS_BY_NAME:
@@ -28,40 +45,8 @@ export const productReducer = (state = initialState, action) => {
         products: action.payload,
       };
 
-    case types.POST_PRODUCT:
-      return {
-        ...state,
-      };
-
-    case types.UPDATE_PRODUCT:
-      return {
-        ...state,
-      };
-
-    case types.DELETE_PRODUCT:
-      return {
-        ...state,
-      };
-
-    case types.SORT_BY_SCORE:
-      return {
-        ...state,
-        products: action.payload,
-      };
-
-    case types.SORT_BY_PRICE:
-      return {
-        ...state,
-        products: action.payload,
-      };
-
-    case types.SORT_BY_TIME:
-      return {
-        ...state,
-        products: action.payload,
-      };
-
-    case types.FILTER_BY_DIET:
+    case types.FILTER_BY_CATEGORY:
+      console.log(action.payload);
       return {
         ...state,
         products: action.payload,

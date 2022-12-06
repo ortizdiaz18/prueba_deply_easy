@@ -4,11 +4,12 @@ import { useDispatch } from "react-redux";
 import search from "../images/Search.svg";
 import s from "../styles/SearchBar.module.css";
 import * as actions from "../redux/product/actions";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export const SearchBar = () => {
   const [input, setInput] = useState("");
   const dispatch = useDispatch();
+  const navegate = useNavigate();
 
   const handleChange = (e) => {
     setInput(e.target.value);
@@ -17,8 +18,11 @@ export const SearchBar = () => {
   console.log(input);
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(actions.getProductByName(input));
-    setInput("");
+    if (input !== "") {
+      dispatch(actions.getProductByName(input));
+      setInput("");
+      navegate("/resultsearch");
+    }
   };
   return (
     <div className={s.container_search}>

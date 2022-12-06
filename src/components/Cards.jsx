@@ -1,69 +1,94 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getCategories } from "../redux/categories/actions";
-import { getProducts } from "../redux/product/actions";
+import { useParams } from "react-router-dom";
+import * as actionsCategory from "../redux/categories/actions";
+import * as actionsProducts from "../redux/product/actions";
+
 import style from "../styles/Cards.module.css";
-import { Card } from "./Card";
-getCategories;
+import { Card, NavBar } from ".";
+
 export const Cards = () => {
   const dispatch = useDispatch();
+  const { category } = useParams();
 
   const { products } = useSelector((state) => state.products);
   const { categories } = useSelector((state) => state.categories);
 
   useEffect(() => {
-    dispatch(getProducts());
+    dispatch(actionsProducts.getProducts());
   }, []);
 
   useEffect(() => {
-    dispatch(getCategories());
+    dispatch(actionsCategory.getCategories());
   }, []);
 
-  console.log("products", products);
-  console.log("categories", categories);
+  useEffect(() => {
+    dispatch(actionsProducts.filterByCategory(category));
+  }, []);
 
-  return (
-    <div>
-      <h1>Aquí van a ir la Nav</h1>
-
-      <div className={style.cards__container__select}>
-        <select className={style.cards__select}>
-          <option>Populares</option>
-        </select>
-      </div>
-
-      <div className={style.cards__container__select}>
-        <select className={style.cards__select}>
-          <option>Tipos de dietas</option>
-        </select>
-      </div>
-
-      {categories.length &&
-        categories.map((category, i) => (
-          <div className={style.cards__category} key={i}>
-            <div>
-              <b>{category.name_c}</b>
-            </div>
-            <div className={style.cards__span}>
-              <span className="material-symbols-outlined">expand_more</span>
-            </div>
-          </div>
-        ))}
-
+  function handleSelectCategory(e) {
+    dispatch(actionsProducts.getProductByCategory(e.target.value));
+  }
+  function handleSelectOrden(e) {
+    console.log("AAAA", e.target.value);
+    dispatch(actionsProducts.sortByTimePreparation(e.target.value));
+  }
+  if (products.length >0) {
+    return (
       <div>
-        {products.length &&
-          products.map((p) => (
-            <Card
-              key={p.id}
-              image={p.image}
-              name={p.name}
-              description={p.description}
-              price={p.price}
-              // icon={p.icon}
-            />
-          ))}
+        <div>
+          <NavBar />
+        </div>
+        <div className={style.cards_container_select}>
+          <select
+            className={style.cards__select}
+            onChange={(e) => handleSelectOrden(e)}
+          >
+            <option>Tiempo de preparación</option>
+            <option value="min-max">Menor a mayor</option>
+            <option value="max-min">Mayor a menor</option>
+          </select>
+        </div>
+        <div>
+          <select
+            className={style.cards__select}
+            onChange={(e) => handleSelectCategory(e)}
+          >
+            <option>Categorías</option>
+            {categories.length &&
+              categories.map((cat, i) => {
+                return (
+                  <option
+                    key={i}
+                    className={style.cards__category}
+                    value={cat.name_c}
+                  >
+                    {cat.name_c}
+                  </option>
+                );
+              })}
+          </select>
+        </div>
+
+        <div>
+          {products.length &&
+            products.map((p) => (
+              <Card
+                key={p.id}
+                image={p.image}
+                name={p.name}
+                description={p.description}
+                price={p.price}
+              />
+            ))}
+        </div>
       </div>
-      <Card />
-    </div>
-  );
+    );
+  } else {
+    return (
+      <div className="containerSpin">
+        <div className="spinner"></div>
+      </div>
+    );
+  }
 };
