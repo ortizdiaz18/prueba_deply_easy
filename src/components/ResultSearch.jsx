@@ -11,13 +11,13 @@ export const ResultSearch = () => {
       <div>
         <NavBar />
       </div>
-      {products.map((s) => (
+      {products.map((p) => (
         <Card
-          key={s.id}
-          id={s.id}
-          img={s.image}
-          name={s.name}
-          price={s.price}
+        key={p.id}
+        image={p.image}
+        name={p.name}
+        description={p.description}
+        price={p.price}
         />
       ))}
     </div>

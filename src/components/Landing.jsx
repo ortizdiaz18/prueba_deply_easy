@@ -13,7 +13,7 @@ import "../styles/Landing.css";
 } */
 
 export function Landing() {
-  return (
+   return (
     <div className="root">
       <div className="carrousel">
         <div className="item" id="item1">
