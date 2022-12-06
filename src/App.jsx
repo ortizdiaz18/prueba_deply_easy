@@ -10,6 +10,13 @@ import {
 } from "./components";
 
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(actions.getProducts());
+  }, []);
+  useEffect(() => {
+    dispatch(actionsCategory.getCategories());
+  }, []);
   return (
     <div className="App">
       <Routes>
