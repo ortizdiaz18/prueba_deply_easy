@@ -8,6 +8,7 @@ import { useState } from "react";
 import styleForm from "../styles/Form.module.css";
 import tableroFood from "../images/tablero_food.jpg";
 import { selectStyle } from "../styles/StyleSelectForm";
+import {NavBar} from '../components'
 export const CreateProduct = () => {
 
  
@@ -33,7 +34,11 @@ export const CreateProduct = () => {
   }, [categories]);
 
   return (
+   
     <div id={styleForm.containerGlobalForm}>
+       <div>
+      <NavBar/>
+    </div>
       <div className={styleForm.containerForm}>
         <form className={styleForm.form}>
           <div className={styleForm.containerImage}>
@@ -44,9 +49,9 @@ export const CreateProduct = () => {
               <label className={styleForm.labels}>Nombre</label>
               <input type="text"></input>
             </div>
-            <div className={styleForm.containerLabel}>
+            <div className={styleForm.containerLabel }>
               <label className={styleForm.labels}>Descripcion</label>
-              <input type="text"></input>
+              <input className={styleForm.inputDescription} type="text"></input>
             </div>
             <div className={styleForm.containerLabel}>
               <label className={styleForm.labels}>Precio</label>
