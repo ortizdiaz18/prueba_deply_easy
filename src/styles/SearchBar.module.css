@@ -4,6 +4,9 @@ input{
     border-end-start-radius: 2rem;
     border-start-start-radius: 2rem;
 }
+input:focus{
+    color: transparent;
+}
 .btn{
     border: none;
     padding: .2rem;
@@ -15,6 +18,9 @@ input{
 .container{
     display: flex;
     padding: .6rem;
+}
+.container:focus{
+    color: transparent;
 }
 
 ::placeholder {
