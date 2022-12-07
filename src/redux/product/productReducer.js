@@ -52,6 +52,20 @@ export const productReducer = (state = initialState, action) => {
         products: action.payload,
       };
 
+    case types.SORT_PRODUCTS_BY_PRICE:
+      let priceProducts = [...state.supportProducts];
+
+      priceProducts = priceProducts.sort((a, b) => {
+        if (a.price < b.price) return action.payload === "menor-mayor" ? -1 : 1;
+        if (a.price > b.price) return action.payload === "menor-mayor" ? 1 : -1;
+        return 0;
+      });
+
+      return {
+        ...state,
+        products: priceProducts,
+      };
+
     default:
       return state;
   }
