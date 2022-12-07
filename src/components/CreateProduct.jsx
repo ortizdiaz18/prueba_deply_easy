@@ -10,8 +10,11 @@ import styleForm from "../styles/Form.module.css";
 import tableroFood from "../images/tablero_food.jpg";
 import { selectStyle } from "../styles/StyleSelectForm";
 import { NavBar } from "../components";
+import { useNavigate } from "react-router-dom";
+
 export const CreateProduct = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate()
   const [localCategories, setLocalCategories] = useState([]);
   const [options, setOptions] = useState([]);
   const [data, setData] = useState({
@@ -108,6 +111,11 @@ export const CreateProduct = () => {
         Swal.fire({
           title: "OK!",
           text: "El producto se ha creado con exito",
+          icon:"success"
+        }).then(response =>{
+          if(response.isConfirmed){
+            navigate("/home")
+          }
         });
       } else {
         Swal.fire({
@@ -237,10 +245,10 @@ export const CreateProduct = () => {
             </div>
 
             <div className={styleForm.containerButton}>
-              <button className={styleForm.buttonCrear}>Crear Producto</button>
+              <button className={styleForm.buttonCrear} >Crear Producto</button>
             </div>
             <div className={styleForm.containerButton}>
-              <button className={styleForm.buttonCancelar}>Cancelar</button>
+              <button className={styleForm.buttonCancelar} onClick={()=>navigate("/home")}>Cancelar</button>
             </div>
           </div>
         </form>
