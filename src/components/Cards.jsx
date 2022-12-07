@@ -33,12 +33,29 @@ export const Cards = () => {
     console.log("AAAA", e.target.value);
     dispatch(actionsProducts.sortByTimePreparation(e.target.value));
   }
+  function handleSelectPrice(e) {
+    console.log("AAAA", e.target.value);
+    dispatch(actionsProducts.sortProductsByPrice(e.target.value));
+  }
+  console.log("pppppp", products);
   if (products.length > 0) {
     return (
       <div>
         <div>
           <NavBar />
         </div>
+
+        <div className={style.cards_container_select}>
+          <select
+            className={style.cards__select}
+            onChange={(e) => handleSelectPrice(e)}
+          >
+            <option>Orden por precio</option>
+            <option value="menor-mayor">Menor a mayor</option>
+            <option value="mayor-menor">Mayor a menor</option>
+          </select>
+        </div>
+        <br />
         <div className={style.cards_container_select}>
           <select
             className={style.cards__select}
@@ -49,6 +66,7 @@ export const Cards = () => {
             <option value="max-min">Mayor a menor</option>
           </select>
         </div>
+
         <br />
         <div>
           <select

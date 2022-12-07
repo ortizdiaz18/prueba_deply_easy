@@ -37,6 +37,14 @@ export const sortByTimePreparation = (order) => {
   };
 };
 
+export const sortProductsByPrice = (price) => {
+  console.log("action", price);
+  return {
+    type: types.SORT_PRODUCTS_BY_PRICE,
+    payload: price,
+  };
+};
+
 export const getProductByName = (name) => {
   console.log(name);
   return (dispatch) =>

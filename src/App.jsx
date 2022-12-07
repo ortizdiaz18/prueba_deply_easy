@@ -8,6 +8,10 @@ import {
   ResultSearch,
   CreateProduct,
 } from "./components";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import * as actionsCategory from "./redux/categories/actions";
+import * as actions from "./redux/product/actions";
 
 function App() {
   const dispatch = useDispatch();
