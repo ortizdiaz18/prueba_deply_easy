@@ -15,14 +15,7 @@ export const Cards = () => {
   const { categories } = useSelector((state) => state.categories);
 
   useEffect(() => {
-    dispatch(actionsProducts.getProducts());
-  }, []);
-
-  useEffect(() => {
     dispatch(actionsCategory.getCategories());
-  }, []);
-
-  useEffect(() => {
     dispatch(actionsProducts.filterByCategory(category));
   }, []);
 
@@ -68,7 +61,7 @@ export const Cards = () => {
           </select>
         </div>
         <br />
-        <div>
+        {/* <div>
           <select
             className={style.cards__select}
             onChange={(e) => handleSelectCategory(e)}
@@ -88,7 +81,7 @@ export const Cards = () => {
               })}
           </select>
         </div>
-        <br />
+            <br /> */}
         <div>
           {products.length &&
             products.map((p) => (

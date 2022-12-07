@@ -76,3 +76,9 @@ export const sortProductsByPrice = (price) => {
     payload: price,
   };
 };
+
+export const clearProduct = () => {
+  return {
+    type: types.CLEAR_PRODUCTS,
+  };
+};
