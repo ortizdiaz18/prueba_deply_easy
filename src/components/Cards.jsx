@@ -68,7 +68,7 @@ export const Cards = () => {
           </select>
         </div>
         <br />
-        <div>
+        {/* <div>
           <select
             className={style.cards__select}
             onChange={(e) => handleSelectCategory(e)}
@@ -88,7 +88,7 @@ export const Cards = () => {
               })}
           </select>
         </div>
-        <br />
+            <br /> */}
         <div>
           {products.length &&
             products.map((p) => (
