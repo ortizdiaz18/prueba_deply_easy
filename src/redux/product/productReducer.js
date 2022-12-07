@@ -50,6 +50,7 @@ export const productReducer = (state = initialState, action) => {
       return {
         ...state,
         products: action.payload,
+        supportProducts: action.payload,
       };
 
     case types.SORT_PRODUCTS_BY_PRICE:
@@ -64,6 +65,13 @@ export const productReducer = (state = initialState, action) => {
       return {
         ...state,
         products: priceProducts,
+      };
+
+    case types.CLEAR_PRODUCTS:
+      return {
+        ...state,
+        products: [],
+        supportProducts: [],
       };
 
     default:

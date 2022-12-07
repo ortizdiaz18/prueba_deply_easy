@@ -1,19 +1,15 @@
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
-import { Home, Landing, Login, Cards, ResultSearch, CreateProduct } from "./components";
-import * as actions from "./redux/product/actions";
-import * as actionsCategory from "./redux/categories/actions";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import {
+  Home,
+  Landing,
+  Login,
+  Cards,
+  ResultSearch,
+  CreateProduct,
+} from "./components";
 
 function App() {
-  const dispatch = useDispatch();
- useEffect(()=>{
-dispatch(actions.getProducts())
- },[])
- useEffect(()=>{
-dispatch(actionsCategory.getCategories())
- },[])
   return (
     <div className="App">
       <Routes>

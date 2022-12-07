@@ -2,8 +2,15 @@ import React from "react";
 import s from "../styles/Home.module.css";
 import { NavBar } from ".";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import * as actions from "../redux/product/actions";
 
 export const Home = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(actions.clearProduct());
+  }, []);
   return (
     <div>
       <div>

@@ -15,14 +15,7 @@ export const Cards = () => {
   const { categories } = useSelector((state) => state.categories);
 
   useEffect(() => {
-    dispatch(actionsProducts.getProducts());
-  }, []);
-
-  useEffect(() => {
     dispatch(actionsCategory.getCategories());
-  }, []);
-
-  useEffect(() => {
     dispatch(actionsProducts.filterByCategory(category));
   }, []);
 
