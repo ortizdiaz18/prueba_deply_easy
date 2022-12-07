@@ -1,4 +1,5 @@
 import React from "react";
+import Swal from "sweetalert2";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import Select from "react-select";
@@ -16,9 +17,9 @@ export const CreateProduct = () => {
   const [data, setData] = useState({
     name: "",
     description: "",
-    price: 0,
+    price: "",
     image: "",
-    stock: "",
+    stock: "false",
     prep_time: "",
     categories: "",
   });
@@ -44,24 +45,35 @@ export const CreateProduct = () => {
     });
   };
 
+  const checkText = (e) => {
+    if (/[A-Z || a-z || \s]/.test(e.target.value) || e.target.value === "") {
+      handleInputChange(e);
+    }
+  };
+
+  const checkPriceAndTime = (e) => {
+    if (/[0-9 || .]/.test(e.target.value) || e.target.value === "") {
+      handleInputChange(e);
+    }
+  };
+
   const uploadImage = async (e) => {
     const files = e.target.files;
-    const data = new FormData();
-    data.append("file", files[0]);
-    data.append("upload_preset", "EasyOrder_BD");
+    const dataFile = new FormData();
+    dataFile.append("file", files[0]);
+    dataFile.append("upload_preset", "EasyOrder_BD");
     const res = await fetch(
       "https://api.cloudinary.com/v1_1/dypjcpbis/image/upload",
       {
         method: "POST",
-        body: data,
+        body: dataFile,
       }
     );
 
     const url = await res.json();
-    console.log(url.secure_url);
     setData({
       ...data,
-      image: url.secure_url,
+      ["image"]: url.secure_url,
     });
   };
 
@@ -83,13 +95,36 @@ export const CreateProduct = () => {
     }
   }, [categories]);
 
+  const submit = (e) => {
+    e.preventDefault();
+    fetch("http://localhost:3000/api/v1/products", {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then((response) => {
+      if (response.statusText === "Created") {
+        Swal.fire({
+          title: "OK!",
+          text: "El producto se ha creado con exito",
+        });
+      } else {
+        Swal.fire({
+          title: "Error!",
+          text: "El producto NO se ha podido crear",
+          icon: "error",
+        });
+      }
+    });
+  };
   return (
     <div id={styleForm.containerGlobalForm}>
       <div className={styleForm.containerNav}>
         <NavBar />
       </div>
       <div className={styleForm.containerForm}>
-        <form className={styleForm.form}>
+        <form className={styleForm.form} onSubmit={(e) => submit(e)}>
           <div className={styleForm.containerImage}>
             <img
               className={styleForm.img}
@@ -107,7 +142,7 @@ export const CreateProduct = () => {
                   type="text"
                   name="name"
                   value={data.name}
-                  onChange={(e) => handleInputChange(e)}
+                  onChange={(e) => checkText(e)}
                 ></input>
               </div>
 
@@ -123,6 +158,7 @@ export const CreateProduct = () => {
                     type="number"
                     name="price"
                     value={data.price}
+                    onChange={(e) => checkPriceAndTime(e)}
                   ></input>
                 </div>
               </div>
@@ -135,6 +171,7 @@ export const CreateProduct = () => {
                 type="text"
                 name="description"
                 value={data.description}
+                onChange={(e) => checkText(e)}
               ></textarea>
             </div>
             <div className={styleForm.containerLabel}>
@@ -153,7 +190,13 @@ export const CreateProduct = () => {
                   Tiempo de preparación
                 </label>
                 <div>
-                  <input className={styleForm.inputTime} type="text"></input>
+                  <input
+                    className={styleForm.inputTime}
+                    type="text"
+                    name="prep_time"
+                    value={data.prep_time}
+                    onChange={(e) => checkPriceAndTime(e)}
+                  ></input>
                   <label
                     className={styleForm.labels + " " + styleForm.labelMin}
                   >
@@ -168,23 +211,29 @@ export const CreateProduct = () => {
                 }
               >
                 <label className={styleForm.labels}>Disponible</label>
-                <select name="Disponible" id={styleForm.selectDisponible}>
+                <select
+                  name="stock"
+                  id={styleForm.selectDisponible}
+                  value={data.stock}
+                  onChange={(e) => handleInputChange(e)}
+                >
                   <option value="true">Si</option>
-                  <option value="false" selected>
-                    No
-                  </option>
+                  <option value="false"> No</option>
                 </select>
               </div>
             </div>
 
-            <div className={styleForm.containerLabel}>
+            <div className={styleForm.containerLabelImage}>
               <label className={styleForm.labels}>Imagen</label>
-              <input
-                className={styleForm.inputFile}
-                type="file"
-                accept="image/png , image/jpeg"
-                onChange={uploadImage}
-              ></input>
+              <div className={styleForm.containerInputFile}>
+                <p className={styleForm.p}>Add imagen</p>
+                <input
+                  className={styleForm.inputFile}
+                  type="file"
+                  accept="image/png , image/jpeg"
+                  onChange={uploadImage}
+                ></input>
+              </div>
             </div>
 
             <div className={styleForm.containerButton}>
