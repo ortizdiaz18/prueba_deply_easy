@@ -68,3 +68,11 @@ export const filterByCategory = (category) => {
       })
       .catch((error) => console.log(error));
 };
+
+export const sortProductsByPrice = (price) => {
+  console.log("action", price);
+  return {
+    type: types.SORT_PRODUCTS_BY_PRICE,
+    payload: price,
+  };
+};
