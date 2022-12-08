@@ -1,0 +1,37 @@
+.cards__category {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: rgb(241, 243, 245);
+  padding-left: 3rem;
+  padding-right: 3rem;
+  padding-top: 1rem;
+  margin: 1rem;
+  font-family: "Comfortaa", cursive;
+}
+
+.cards__span {
+  color: goldenrod;
+}
+
+.cards__container__select {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  margin: 1rem;
+}
+.cards__select {
+  padding: 0.5rem;
+  border-radius: 1.5rem;
+  width: 20rem;
+  font-family: "Comfortaa", cursive;
+}
+
+.cards__button {
+  color: goldenrod;
+  font-family: "Comfortaa", cursive;
+  border: solid 0.5px rgb(70, 69, 69);
+  padding: 0.6rem;
+  border-radius: 1.5rem;
+}
