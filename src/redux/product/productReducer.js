@@ -53,6 +53,13 @@ export const productReducer = (state = initialState, action) => {
         supportProducts: action.payload,
       };
 
+      case types.GET_PRODUCT_BY_ID:
+      console.log(action.payload);
+      return {
+        ...state,
+        detailProduct: action.payload,
+      };
+
     case types.SORT_PRODUCTS_BY_PRICE:
       let priceProducts = [...state.supportProducts];
 

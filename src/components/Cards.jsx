@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import * as actionsCategory from "../redux/categories/actions";
 import * as actionsProducts from "../redux/product/actions";
 
+
 import style from "../styles/Cards.module.css";
-import { Card, NavBar } from ".";
+import { Card, Details, NavBar } from ".";
 
 export const Cards = () => {
   const dispatch = useDispatch();
@@ -19,8 +20,12 @@ export const Cards = () => {
     dispatch(actionsProducts.filterByCategory(category));
   }, []);
 
+  // useEffect(() => {
+  //   dispatch(actionsProducts.filterByCategory(category));
+  // }, []);
+
   function handleSelectCategory(e) {
-    dispatch(actionsProducts.getProductByCategory(e.target.value));
+    dispatch(actionsProducts.filterByCategory(e.target.value));
   }
   function handleSelectOrden(e) {
     console.log("AAAA", e.target.value);
@@ -85,13 +90,15 @@ export const Cards = () => {
         <div>
           {products.length &&
             products.map((p) => (
+              <Link key={p.id} to= {`/details/${p.id}`}>
               <Card
-                key={p.id}
+                
                 image={p.image}
                 name={p.name}
                 description={p.description}
                 price={p.price}
               />
+              </Link>
             ))}
         </div>
       </div>
