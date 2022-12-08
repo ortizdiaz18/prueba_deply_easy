@@ -91,3 +91,10 @@ export const getProductById = (id) => {
       })
       .catch((error) => console.log(error));
 };
+
+export const clearProduct = () => {
+  return {
+    type: types.CLEAR_PRODUCTS,
+  };
+};
+
