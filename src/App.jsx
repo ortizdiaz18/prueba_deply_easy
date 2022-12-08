@@ -1,6 +1,6 @@
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
-import { Home, Landing, Login, Cards, ResultSearch, CreateProduct } from "./components";
+import { Home, Landing, Login, Cards, ResultSearch, CreateProduct, Details } from "./components";
 import * as actions from "./redux/product/actions";
 import * as actionsCategory from "./redux/categories/actions";
 import { useEffect } from "react";
@@ -24,6 +24,7 @@ dispatch(actionsCategory.getCategories())
         <Route path="/cards" element={<Cards />} />
         <Route path="/createProduct" element={<CreateProduct />} />
         <Route path="resultsearch" element={<ResultSearch />} />
+        <Route path="/details/:id" element={<Details />} />
       </Routes>
     </div>
   );
