@@ -27,78 +27,77 @@ export const Cards = () => {
     dispatch(actionsProducts.sortByTimePreparation(e.target.value));
   }
   if (products.length > 0) {
+    function handleSelectPrice(e) {
+      console.log("AAAA", e.target.value);
+      dispatch(actionsProducts.sortProductsByPrice(e.target.value));
+    }
 
-  function handleSelectPrice(e) {
-    console.log("AAAA", e.target.value);
-    dispatch(actionsProducts.sortProductsByPrice(e.target.value));
-  }
-
-  if (products.length > 0) {
-    return (
-      <div>
+    if (products.length > 0) {
+      return (
         <div>
-          <NavBar />
-        </div>
+          <div>
+            <NavBar />
+          </div>
 
-        <div className={style.cards_container_select}>
-          <select
-            className={style.cards__select}
-            onChange={(e) => handleSelectPrice(e)}
-          >
-            <option>Orden por precio</option>
-            <option value="menor-mayor">Menor a mayor</option>
-            <option value="mayor-menor">Mayor a menor</option>
-          </select>
-        </div>
-        <br />
-        <div className={style.cards_container_select}>
-          <select
-            className={style.cards__select}
-            onChange={(e) => handleSelectPrice(e)}
-          >
-            <option>Orden por precio</option>
-            <option value="menor-mayor">Menor a mayor</option>
-            <option value="mayor-menor">Mayor a menor</option>
-          </select>
-        </div>
-        <br />
+          <div className={style.cards_container_select}>
+            <select
+              className={style.cards__select}
+              onChange={(e) => handleSelectPrice(e)}
+            >
+              <option>Orden por precio</option>
+              <option value="menor-mayor">Menor a mayor</option>
+              <option value="mayor-menor">Mayor a menor</option>
+            </select>
+          </div>
+          <br />
+          <div className={style.cards_container_select}>
+            <select
+              className={style.cards__select}
+              onChange={(e) => handleSelectPrice(e)}
+            >
+              <option>Orden por precio</option>
+              <option value="menor-mayor">Menor a mayor</option>
+              <option value="mayor-menor">Mayor a menor</option>
+            </select>
+          </div>
+          <br />
 
-        <div className={style.cards_container_select}>
-          <select
-            className={style.cards__select}
-            onChange={(e) => handleSelectPrice(e)}
-          >
-            <option>Orden por precio</option>
-            <option value="menor-mayor">Menor a mayor</option>
-            <option value="mayor-menor">Mayor a menor</option>
-          </select>
-        </div>
-        <br />
+          <div className={style.cards_container_select}>
+            <select
+              className={style.cards__select}
+              onChange={(e) => handleSelectPrice(e)}
+            >
+              <option>Orden por precio</option>
+              <option value="menor-mayor">Menor a mayor</option>
+              <option value="mayor-menor">Mayor a menor</option>
+            </select>
+          </div>
+          <br />
 
-        <div className={style.cards_container_select}>
-          <select
-            className={style.cards__select}
-            onChange={(e) => handleSelectPrice(e)}
-          >
-            <option>Orden por precio</option>
-            <option value="menor-mayor">Menor a mayor</option>
-            <option value="mayor-menor">Mayor a menor</option>
-          </select>
-        </div>
-        <br />
+          <div className={style.cards_container_select}>
+            <select
+              className={style.cards__select}
+              onChange={(e) => handleSelectPrice(e)}
+            >
+              <option>Orden por precio</option>
+              <option value="menor-mayor">Menor a mayor</option>
+              <option value="mayor-menor">Mayor a menor</option>
+            </select>
+          </div>
+          <br />
 
-        <div className={style.cards_container_select}>
-          <select
-            className={style.cards__select}
-            onChange={(e) => handleSelectOrden(e)}
-          >
-            <option>Tiempo de preparación</option>
-            <option value="min-max">Menor a mayor</option>
-            <option value="max-min">Mayor a menor</option>
-          </select>
-        </div>
-        <br />
-        {/*<div>
+          <div className={style.cards_container_select}>
+            <select
+              className={style.cards__select}
+              onChange={(e) => handleSelectOrden(e)}
+            >
+              <option>Tiempo de preparación</option>
+              <option value="min-max">Menor a mayor</option>
+              <option value="max-min">Mayor a menor</option>
+            </select>
+          </div>
+          <br />
+          {/*<div>
           <select
             className={style.cards__select}
             onChange={(e) => handleSelectCategory(e)}
@@ -120,25 +119,26 @@ export const Cards = () => {
         </div>
         <br />
             <br /> */}
-        <div>
-          {products.length &&
-            products.map((p) => (
-              <Card
-                key={p.id}
-                image={p.image}
-                name={p.name}
-                description={p.description}
-                price={p.price}
-              />
-            ))}
+          <div>
+            {products.length &&
+              products.map((p) => (
+                <Card
+                  key={p.id}
+                  image={p.image}
+                  name={p.name}
+                  description={p.description}
+                  price={p.price}
+                />
+              ))}
+          </div>
         </div>
-      </div>
-    );
-  } else {
-    return (
-      <div className="containerSpin">
-        <div className="spinner"></div>
-      </div>
-    );
+      );
+    } else {
+      return (
+        <div className="containerSpin">
+          <div className="spinner"></div>
+        </div>
+      );
+    }
   }
 };
