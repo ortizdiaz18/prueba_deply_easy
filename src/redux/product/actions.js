@@ -62,8 +62,24 @@ export const sortProductsByPrice = (price) => {
   };
 };
 
+export const getProductById = (id) => {
+  return (dispatch) =>
+    axios
+      .get(`http://localhost:3000/api/v1/products/${id}`)
+      .then((response) => {
+        console.log(response.data)
+        dispatch({
+          type: types.GET_PRODUCT_BY_ID,
+          payload: response.data,
+        });
+
+      })
+      .catch((error) => console.log(error));
+};
+
 export const clearProduct = () => {
   return {
     type: types.CLEAR_PRODUCTS,
   };
 };
+

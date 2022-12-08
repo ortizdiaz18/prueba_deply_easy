@@ -4,8 +4,9 @@ import { useParams, Link } from "react-router-dom";
 import * as actionsCategory from "../redux/categories/actions";
 import * as actionsProducts from "../redux/product/actions";
 
+
 import style from "../styles/Cards.module.css";
-import { Card, NavBar } from ".";
+import { Card, Details, NavBar } from ".";
 
 export const Cards = () => {
   const dispatch = useDispatch();
@@ -18,6 +19,10 @@ export const Cards = () => {
     dispatch(actionsCategory.getCategories());
     dispatch(actionsProducts.filterByCategory(category));
   }, []);
+
+  // useEffect(() => {
+  //   dispatch(actionsProducts.filterByCategory(category));
+  // }, []);
 
   function handleSelectCategory(e) {
     dispatch(actionsProducts.filterByCategory(e.target.value));
@@ -87,6 +92,7 @@ export const Cards = () => {
         <div>
           {products.length &&
             products.map((p) => (
+<<<<<<< HEAD
               <Link to={`/details/${p.id}`}>
                 <Card
                   key={p.id}
@@ -95,6 +101,16 @@ export const Cards = () => {
                   description={p.description}
                   price={p.price}
                 />
+=======
+              <Link key={p.id} to= {`/details/${p.id}`}>
+              <Card
+                
+                image={p.image}
+                name={p.name}
+                description={p.description}
+                price={p.price}
+              />
+>>>>>>> main
               </Link>
             ))}
         </div>
