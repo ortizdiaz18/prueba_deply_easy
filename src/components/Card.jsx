@@ -14,7 +14,9 @@ export const Card = ({ name, price, image, description }) => {
             <b>{name}</b>
           </h4>
           <br />
-          <div className={style.card_description_B}>{description}</div>
+          <div className={style.card_description_B}>
+            {description.slice(0, 20) + "..."}
+          </div>
         </div>
 
         <div className={style.card_description_C}>
