@@ -13,15 +13,16 @@ export const Card = ({ name, price, image, description }) => {
           <h4 className={style.card_description_A}>
             <b>{name}</b>
           </h4>
-          <div className={style.card_description_B}>
-            {description.slice(0, 30) + "..."}
-          </div>
+          <br />
+          <div className={style.card_description_B}>{description}</div>
         </div>
 
         <div className={style.card_description_C}>
           <div>{`$ ${price}`}</div>
           <div>
-            <span className="material-symbols-outlined">add_circle</span>
+            <span id={style.color__span} className="material-symbols-outlined">
+              add_circle
+            </span>
           </div>
         </div>
       </div>
