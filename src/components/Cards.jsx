@@ -5,7 +5,7 @@ import * as actionsCategory from "../redux/categories/actions";
 import * as actionsProducts from "../redux/product/actions";
 
 import style from "../styles/Cards.module.css";
-import { Card, NavBar } from ".";
+import { Card, NavBar, Pagination } from ".";
 
 export const Cards = () => {
   const dispatch = useDispatch();
@@ -13,6 +13,18 @@ export const Cards = () => {
 
   const { products } = useSelector((state) => state.products);
   const { categories } = useSelector((state) => state.categories);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [productsPerPage] = useState(9);
+  const indexOfLastProduct = currentPage * productsPerPage; // 9
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage; // 0
+  const currentProduct = products.slice(
+    indexOfFirstProduct,
+    indexOfLastProduct
+  );
+  const paginate = (number) => {
+    setCurrentPage(number);
+  };
 
   useEffect(() => {
     dispatch(actionsCategory.getCategories());
@@ -82,17 +94,22 @@ export const Cards = () => {
           </select>
         </div>
             <br /> */}
+        <Pagination
+          productsPerPage={productsPerPage}
+          products={products?.length}
+          paginate={paginate}
+          currentPage={currentPage}
+        />
         <div>
-          {products.length &&
-            products.map((p) => (
-              <Card
-                key={p.id}
-                image={p.image}
-                name={p.name}
-                description={p.description}
-                price={p.price}
-              />
-            ))}
+          {currentProduct?.map((p) => (
+            <Card
+              key={p.id}
+              image={p.image}
+              name={p.name}
+              description={p.description}
+              price={p.price}
+            />
+          ))}
         </div>
       </div>
     );
