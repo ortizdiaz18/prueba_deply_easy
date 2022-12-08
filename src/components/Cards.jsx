@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import * as actionsCategory from "../redux/categories/actions";
 import * as actionsProducts from "../redux/product/actions";
 
@@ -20,7 +20,7 @@ export const Cards = () => {
   }, []);
 
   function handleSelectCategory(e) {
-    dispatch(actionsProducts.getProductByCategory(e.target.value));
+    dispatch(actionsProducts.filterByCategory(e.target.value));
   }
   function handleSelectOrden(e) {
     console.log("AAAA", e.target.value);
@@ -61,7 +61,7 @@ export const Cards = () => {
           </select>
         </div>
         <br />
-        {/* <div>
+        <div>
           <select
             className={style.cards__select}
             onChange={(e) => handleSelectCategory(e)}
@@ -70,6 +70,7 @@ export const Cards = () => {
             {categories.length &&
               categories.map((cat, i) => {
                 return (
+                  
                   <option
                     key={i}
                     className={style.cards__category}
@@ -77,21 +78,24 @@ export const Cards = () => {
                   >
                     {cat.name_c}
                   </option>
+                  
                 );
               })}
           </select>
         </div>
-            <br /> */}
+        <br />
         <div>
           {products.length &&
             products.map((p) => (
-              <Card
-                key={p.id}
-                image={p.image}
-                name={p.name}
-                description={p.description}
-                price={p.price}
-              />
+              <Link to={`/details/${p.id}`}>
+                <Card
+                  key={p.id}
+                  image={p.image}
+                  name={p.name}
+                  description={p.description}
+                  price={p.price}
+                />
+              </Link>
             ))}
         </div>
       </div>
