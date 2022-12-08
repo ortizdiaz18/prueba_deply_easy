@@ -14,34 +14,26 @@ export const getProducts = () => {
       .catch((error) => console.log(error));
 };
 
-export const getProductByCategory = (category) => {
-  return (dispatch) =>
-    axios
-      .get(
-        `http://localhost:3000/api/v1/products/filterByCategory?category=${category}`
-      )
-      .then((response) => {
-        dispatch({
-          type: types.GET_PRODUCTS_BY_CATEGORY,
-          payload: response.data,
-        });
-      })
-      .catch((error) => console.log(error));
-};
+// export const getProductByCategory = (category) => {
+//   return (dispatch) =>
+//     axios
+//       .get(
+//         `http://localhost:3000/api/v1/products/filter/filterByCategory?category=${category}`
+//       )
+//       .then((response) => {
+//         dispatch({
+//           type: types.GET_PRODUCTS_BY_CATEGORY,
+//           payload: response.data,
+//         });
+//       })
+//       .catch((error) => console.log(error));
+// };
 
 export const sortByTimePreparation = (order) => {
   console.log("action", order);
   return {
     type: types.SORT_BY_TIME_PREPARATION,
     payload: order,
-  };
-};
-
-export const sortProductsByPrice = (price) => {
-  console.log("action", price);
-  return {
-    type: types.SORT_PRODUCTS_BY_PRICE,
-    payload: price,
   };
 };
 
@@ -65,7 +57,7 @@ export const filterByCategory = (category) => {
   return (dispatch) =>
     axios
       .get(
-        `http://localhost:3000/api/v1//products/filterByCategory?category=${category}`
+        `http://localhost:3000/api/v1//products/filter/filterByCategory?category=${category}`
       )
       .then((response) => {
         console.log(response.data);
@@ -75,4 +67,18 @@ export const filterByCategory = (category) => {
         });
       })
       .catch((error) => console.log(error));
+};
+
+export const sortProductsByPrice = (price) => {
+  console.log("action", price);
+  return {
+    type: types.SORT_PRODUCTS_BY_PRICE,
+    payload: price,
+  };
+};
+
+export const clearProduct = () => {
+  return {
+    type: types.CLEAR_PRODUCTS,
+  };
 };
