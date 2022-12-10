@@ -92,25 +92,13 @@ export const Cards = () => {
         <div>
           {products.length &&
             products.map((p) => (
-<<<<<<< HEAD
-              <Link to={`/details/${p.id}`}>
-                <Card
-                  key={p.id}
-                  image={p.image}
-                  name={p.name}
-                  description={p.description}
-                  price={p.price}
-                />
-=======
               <Link key={p.id} to= {`/details/${p.id}`}>
               <Card
-                
                 image={p.image}
                 name={p.name}
                 description={p.description}
                 price={p.price}
               />
->>>>>>> main
               </Link>
             ))}
         </div>
