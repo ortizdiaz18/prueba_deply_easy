@@ -42,8 +42,8 @@ export const NavBar = () => {
           </div>
 
           <div className={s.modalDiv}>
-            <span class={`material-symbols-outlined ${s.modalSpan}`} onClick={() => navigate("/home")}>home</span>
-            <button class={s.modalButton}>Inicio</button>
+            <span className={`material-symbols-outlined ${s.modalSpan}`} onClick={() => navigate("/home")}>home</span>
+            <button className={s.modalButton}>Inicio</button>
           </div>
           <div className={s.modalDiv}>
             <span className={`material-symbols-outlined ${s.modalSpan}`}>
