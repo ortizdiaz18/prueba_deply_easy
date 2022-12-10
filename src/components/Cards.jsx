@@ -66,7 +66,7 @@ export const Cards = () => {
           </select>
         </div>
         <br />
-        {/* <div>
+        <div>
           <select
             className={style.cards__select}
             onChange={(e) => handleSelectCategory(e)}
@@ -75,6 +75,7 @@ export const Cards = () => {
             {categories.length &&
               categories.map((cat, i) => {
                 return (
+                  
                   <option
                     key={i}
                     className={style.cards__category}
@@ -82,17 +83,17 @@ export const Cards = () => {
                   >
                     {cat.name_c}
                   </option>
+                  
                 );
               })}
           </select>
         </div>
-            <br /> */}
+        <br />
         <div>
           {products.length &&
             products.map((p) => (
               <Link key={p.id} to= {`/details/${p.id}`}>
               <Card
-                
                 image={p.image}
                 name={p.name}
                 description={p.description}

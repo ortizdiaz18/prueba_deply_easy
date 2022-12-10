@@ -16,12 +16,6 @@ export const productReducer = (state = initialState, action) => {
         supportProducts: action.payload,
       };
 
-    case types.GET_PRODUCTS_BY_CATEGORY:
-      return {
-        ...state,
-        products: action.payload,
-      };
-
     case types.SORT_BY_TIME_PREPARATION:
       let orderedProducts = [...state.supportProducts];
 

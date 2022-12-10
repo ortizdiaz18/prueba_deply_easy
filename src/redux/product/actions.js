@@ -14,21 +14,6 @@ export const getProducts = () => {
       .catch((error) => console.log(error));
 };
 
-// export const getProductByCategory = (category) => {
-//   return (dispatch) =>
-//     axios
-//       .get(
-//         `http://localhost:3000/api/v1/products/filter/filterByCategory?category=${category}`
-//       )
-//       .then((response) => {
-//         dispatch({
-//           type: types.GET_PRODUCTS_BY_CATEGORY,
-//           payload: response.data,
-//         });
-//       })
-//       .catch((error) => console.log(error));
-// };
-
 export const sortByTimePreparation = (order) => {
   console.log("action", order);
   return {
@@ -57,7 +42,7 @@ export const filterByCategory = (category) => {
   return (dispatch) =>
     axios
       .get(
-        `http://localhost:3000/api/v1//products/filter/filterByCategory?category=${category}`
+        `http://localhost:3000/api/v1/products/filter/filterByCategory?category=${category}`
       )
       .then((response) => {
         console.log(response.data);
