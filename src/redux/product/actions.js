@@ -67,12 +67,11 @@ export const getProductById = (id) => {
     axios
       .get(`http://localhost:3000/api/v1/products/${id}`)
       .then((response) => {
-        console.log(response.data)
+        console.log(response.data);
         dispatch({
           type: types.GET_PRODUCT_BY_ID,
           payload: response.data,
         });
-
       })
       .catch((error) => console.log(error));
 };
@@ -83,3 +82,16 @@ export const clearProduct = () => {
   };
 };
 
+export const addProductCart = (product) => {
+  console.log(product);
+  return {
+    type: types.ADD_PRODUCT_CART,
+    payload: product,
+  };
+};
+
+export const clearCart = () => {
+  return {
+    type: types.CLEAR_CART,
+  };
+};

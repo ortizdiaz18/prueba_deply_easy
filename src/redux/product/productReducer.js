@@ -5,6 +5,7 @@ const initialState = {
   supportProducts: [],
   detailProduct: {},
   changes: false,
+  productsCart: [],
 };
 
 export const productReducer = (state = initialState, action) => {
@@ -47,7 +48,7 @@ export const productReducer = (state = initialState, action) => {
         supportProducts: action.payload,
       };
 
-      case types.GET_PRODUCT_BY_ID:
+    case types.GET_PRODUCT_BY_ID:
       console.log(action.payload);
       return {
         ...state,
@@ -75,6 +76,18 @@ export const productReducer = (state = initialState, action) => {
         supportProducts: [],
       };
 
+    case types.ADD_PRODUCT_CART:
+      console.log(action.payload);
+      return {
+        ...state,
+        productsCart: [...state.productsCart, action.payload],
+      };
+
+    case types.CLEAR_CART:
+      return {
+        ...state,
+        productsCart: [],
+      };
     default:
       return state;
   }
