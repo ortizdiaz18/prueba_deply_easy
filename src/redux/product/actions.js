@@ -14,27 +14,18 @@ export const getProducts = () => {
       .catch((error) => console.log(error));
 };
 
-// export const getProductByCategory = (category) => {
-//   return (dispatch) =>
-//     axios
-//       .get(
-//         `http://localhost:3000/api/v1/products/filter/filterByCategory?category=${category}`
-//       )
-//       .then((response) => {
-//         dispatch({
-//           type: types.GET_PRODUCTS_BY_CATEGORY,
-//           payload: response.data,
-//         });
-//       })
-//       .catch((error) => console.log(error));
-// };
-
-export const sortByTimePreparation = (order) => {
-  console.log("action", order);
-  return {
-    type: types.SORT_BY_TIME_PREPARATION,
-    payload: order,
-  };
+export const sortByTimePreparation = (time, category) => {
+  return (dispatch) =>
+    axios
+      .get(
+        `http://localhost:3000/api/v1/products/filter/filter/timePreparationOrder`
+      )
+      .then((response) => {
+        dispatch({
+          type: types.SORT_BY_TIME_PREPARATION,
+          payload: { response: response.data, time, category },
+        });
+      });
 };
 
 export const getProductByName = (name) => {
@@ -43,7 +34,6 @@ export const getProductByName = (name) => {
     axios
       .get(`http://localhost:3000/api/v1/products?name=${name}`)
       .then((response) => {
-        console.log(response.data);
         dispatch({
           type: types.GET_PRODUCTS_BY_NAME,
           payload: response.data,
@@ -53,14 +43,12 @@ export const getProductByName = (name) => {
 };
 
 export const filterByCategory = (category) => {
-  console.log(category);
   return (dispatch) =>
     axios
       .get(
-        `http://localhost:3000/api/v1//products/filter/filterByCategory?category=${category}`
+        `http://localhost:3000/api/v1/products/filter/filterByCategory?category=${category}`
       )
       .then((response) => {
-        console.log(response.data);
         dispatch({
           type: types.FILTER_BY_CATEGORY,
           payload: response.data,
@@ -69,16 +57,49 @@ export const filterByCategory = (category) => {
       .catch((error) => console.log(error));
 };
 
-export const sortProductsByPrice = (price) => {
-  console.log("action", price);
-  return {
-    type: types.SORT_PRODUCTS_BY_PRICE,
-    payload: price,
-  };
+export const sortProductsByPrice = (price, category) => {
+  return (dispatch) =>
+    axios
+      .get(`http://localhost:3000/api/v1/products/filter/filter/priceOrder`)
+      .then((response) => {
+        dispatch({
+          type: types.SORT_PRODUCTS_BY_PRICE,
+          payload: { response: response.data, price, category },
+        });
+        supportPrice = [];
+      })
+      .catch((error) => console.log(error));
+};
+
+export const getProductById = (id) => {
+  return (dispatch) =>
+    axios
+      .get(`http://localhost:3000/api/v1/products/${id}`)
+      .then((response) => {
+        dispatch({
+          type: types.GET_PRODUCT_BY_ID,
+          payload: response.data,
+        });
+      })
+      .catch((error) => console.log(error));
 };
 
 export const clearProduct = () => {
   return {
     type: types.CLEAR_PRODUCTS,
+  };
+};
+
+export const deleteProduct = (id) => {
+  return (dispatch) => {
+    axios
+      .delete(`http://localhost:3000/api/v1/products/${id}`)
+      .then((response) => {
+        return {
+          type: types.DELETE_PRODUCT,
+          payload: id,
+        };
+      })
+      .catch((error) => console.log(error));
   };
 };
