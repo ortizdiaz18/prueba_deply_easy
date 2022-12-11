@@ -8,7 +8,12 @@ import {
   ResultSearch,
   CreateProduct,
   Details,
+  Profile,
 } from "./components";
+import * as actions from "./redux/product/actions";
+import * as actionsCategory from "./redux/categories/actions";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 
 function App() {
   return (
@@ -18,6 +23,7 @@ function App() {
         <Route path="/cards/:category" element={<Cards />} />
         <Route path="/cards" element={<Cards />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="/home" element={<Home />} />
         <Route path="/createProduct" element={<CreateProduct />} />
         <Route path="resultsearch" element={<ResultSearch />} />
