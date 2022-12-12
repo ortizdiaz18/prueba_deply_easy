@@ -17,10 +17,7 @@ export const getProducts = () => {
 export const sortByTimePreparation = (time, category) => {
   return (dispatch) =>
     axios
-      .get(
-        //modificaron la DB
-        `http://localhost:3000/api/v1/products/filter/timePreparationOrder`
-      )
+      .get(`http://localhost:3000/api/v1/products/filter/timePreparationOrder`)
       .then((response) => {
         dispatch({
           type: types.SORT_BY_TIME_PREPARATION,
@@ -61,7 +58,6 @@ export const filterByCategory = (category) => {
 export const sortProductsByPrice = (price, category) => {
   return (dispatch) =>
     axios
-      //modificaron la DB
       .get(`http://localhost:3000/api/v1/products/priceOrder`)
       .then((response) => {
         dispatch({
