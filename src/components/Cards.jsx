@@ -13,10 +13,11 @@ export const Cards = () => {
   const { products } = useSelector((state) => state.products);
   const { categories } = useSelector((state) => state.categories);
   const navigate = useNavigate();
-  const [price, setPrice] = useState("");
 
+  const [price, setPrice] = useState("");
   const [time, setTime] = useState("");
   const [cate, setCate] = useState("");
+
   useEffect(() => {
     dispatch(actionsCategory.getCategories());
     dispatch(actionsProducts.filterByCategory(category));
