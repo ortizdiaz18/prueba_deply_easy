@@ -18,7 +18,8 @@ export const sortByTimePreparation = (time, category) => {
   return (dispatch) =>
     axios
       .get(
-        `http://localhost:3000/api/v1/products/filter/filter/timePreparationOrder`
+        //modificaron la DB
+        `http://localhost:3000/api/v1/products/timePreparationOrder`
       )
       .then((response) => {
         dispatch({
@@ -46,7 +47,7 @@ export const filterByCategory = (category) => {
   return (dispatch) =>
     axios
       .get(
-        `http://localhost:3000/api/v1/products/filter/filterByCategory?category=${category}``http://localhost:3000/api/v1/products/filter/filterByCategory?category=${category}`
+        `http://localhost:3000/api/v1/products/filter/filterByCategory?category=${category}`
       )
       .then((response) => {
         dispatch({
@@ -60,6 +61,7 @@ export const filterByCategory = (category) => {
 export const sortProductsByPrice = (price, category) => {
   return (dispatch) =>
     axios
+      //modificaron la DB
       .get(`http://localhost:3000/api/v1/products/filter/filter/priceOrder`)
       .then((response) => {
         dispatch({
