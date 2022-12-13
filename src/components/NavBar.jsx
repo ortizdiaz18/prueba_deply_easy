@@ -11,7 +11,7 @@ export const NavBar = () => {
 
   const navigate = useNavigate();
   let location = useLocation().pathname;
-  if (location !== "/createProduct" && !location.includes("/cards")) {
+  if (location !== "/createProduct" && !location.includes("/cards") && location !== "/profile") {
     return (
       <div>
         <div
