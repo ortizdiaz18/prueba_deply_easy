@@ -5,8 +5,7 @@ import * as actionsCategory from "../redux/categories/actions";
 import * as actionsProducts from "../redux/product/actions";
 
 import style from "../styles/Cards.module.css";
-import { Card, NavBar } from ".";
-import Pagination from "./Pagination";
+import { Card, NavBar, Pagination } from ".";
 
 export const Cards = () => {
   const dispatch = useDispatch();
@@ -21,7 +20,7 @@ export const Cards = () => {
 
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage] = useState(6);
-  const indexOfLastProduct = currentPage * productsPerPage; // 9
+  const indexOfLastProduct = currentPage * productsPerPage; // 6
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage; // 0
   const currentProduct = products.slice(
     indexOfFirstProduct,
@@ -54,7 +53,6 @@ export const Cards = () => {
     navigate(`/cards/${e.target.value}`);
     dispatch(actionsProducts.filterByCategory(e.target.value));
   };
-
   return (
     <div>
       <div>
@@ -70,7 +68,7 @@ export const Cards = () => {
             handleSelectPrice(e);
           }}
         >
-          <option value="">Ordén por precio</option>
+          <option value="">Orden por precio</option>
           <option value="menor-mayor">Menor a mayor</option>
           <option value="mayor-menor">Mayor a menor</option>
         </select>
@@ -111,7 +109,17 @@ export const Cards = () => {
       </div>
       <br />
       <div>
-        {currentProduct.length ? (
+        {products.length && (
+          <Pagination
+            productsPerPage={productsPerPage}
+            products={products.length}
+            paginate={paginate}
+            currentPage={currentPage}
+          />
+        )}
+      </div>
+      <div>
+        {currentProduct.length > 0 ? (
           currentProduct.map((p) => (
             <Link key={p.id} to={`/details/${p.id}`}>
               <Card
@@ -128,12 +136,6 @@ export const Cards = () => {
           </div>
         )}
       </div>
-      <Pagination
-        productsPerPage={productsPerPage}
-        products={products?.length}
-        paginate={paginate}
-        currentPage={currentPage}
-      />
     </div>
   );
 };
