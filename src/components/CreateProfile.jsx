@@ -133,7 +133,7 @@ export const CreateProfile = () => {
         <div className="spinner"></div>
       </div>
     );
-  }else if(typeof profile !== 'object' && Object.entries(profile).length<1){
+  }else if(typeof profile !== 'object'){
 
     return (
       <div id={styleCreateProfile.containerGlobalForm}>
