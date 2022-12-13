@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import * as actions from "../redux/product/actions";
 import style from "../styles/Details.module.css";
+import s from "../styles/ItemCount.module.css";
 import { NavBar } from ".";
 
 export const Details = () => {
   const { id } = useParams();
   const navegate = useNavigate();
-  const [cantidad, setCantidad] = useState(0);
+  const [count, setCount] = useState(1);
 
   const dispatch = useDispatch();
 
@@ -16,30 +17,31 @@ export const Details = () => {
     dispatch(actions.getProductById(id));
   }, []);
 
-  const handleChange = (e) => {
-    setCantidad(+e.target.value);
+  const resta = () => {
+    setCount(count - 1);
   };
+
+  const suma = () => {
+    setCount(count + 1);
+  };
+  console.log(count);
 
   const handleClick = (e) => {
     e.preventDefault();
-    /* if (cantidad < 1) {
-      alert("Debe seleccionar una cantidad");
-      return;
-    } */
-    var productSelected = {
+    const productSelected = {
       id,
       image: detailProduct[0].image,
       name: detailProduct[0].name,
-      price: detailProduct[0].price * cantidad,
-      cantidad,
+      price: detailProduct[0].price,
+      priceTotal: detailProduct[0].price * count,
+      count,
     };
     dispatch(actions.addProductCart(productSelected));
-    setCantidad(0);
+    setCount(1);
   };
 
   const handleToCart = (e) => {
     e.preventDefault();
-    //handleClick(e);
     navegate("/cart");
   };
 
@@ -78,14 +80,15 @@ export const Details = () => {
             </div>
             <br />
             <h3>Cantidad</h3>
-            <select id="cantidad" onChange={handleChange}>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-            </select>
+            <div className={s.counter}>
+              <button disabled={count <= 1} className={s.btn} onClick={resta}>
+                -
+              </button>
+              <span>{count}</span>
+              <button className={s.btn} onClick={suma}>
+                +
+              </button>
+            </div>
             <br />
             <br />
             {/* <h2>Categories</h2>
