@@ -19,7 +19,7 @@ export const Cards = () => {
   const [cate, setCate] = useState("");
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [productsPerPage] = useState(6);
+  const [productsPerPage] = useState(5);
   const indexOfLastProduct = currentPage * productsPerPage; // 6
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage; // 0
   const currentProduct = products.slice(
