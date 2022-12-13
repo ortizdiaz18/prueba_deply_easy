@@ -5,7 +5,7 @@ import * as actionsCategory from "../redux/categories/actions";
 import * as actionsProducts from "../redux/product/actions";
 
 import style from "../styles/Cards.module.css";
-import { Card, NavBar } from ".";
+import { Card, NavBar, Pagination } from ".";
 
 export const Cards = () => {
   const dispatch = useDispatch();
@@ -17,6 +17,18 @@ export const Cards = () => {
   const [price, setPrice] = useState("");
   const [time, setTime] = useState("");
   const [cate, setCate] = useState("");
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [productsPerPage] = useState(5);
+  const indexOfLastProduct = currentPage * productsPerPage; // 6
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage; // 0
+  const currentProduct = products.slice(
+    indexOfFirstProduct,
+    indexOfLastProduct
+  );
+  const paginate = (number) => {
+    setCurrentPage(number);
+  };
 
   useEffect(() => {
     dispatch(actionsCategory.getCategories());
@@ -41,7 +53,6 @@ export const Cards = () => {
     navigate(`/cards/${e.target.value}`);
     dispatch(actionsProducts.filterByCategory(e.target.value));
   };
-
   return (
     <div>
       <div>
@@ -57,7 +68,7 @@ export const Cards = () => {
             handleSelectPrice(e);
           }}
         >
-          <option value="">Ordén por precio</option>
+          <option value="">Orden por precio</option>
           <option value="menor-mayor">Menor a mayor</option>
           <option value="mayor-menor">Mayor a menor</option>
         </select>
@@ -99,8 +110,8 @@ export const Cards = () => {
       <br />
 
       <div>
-        {products.length ? (
-          products.map((p) => (
+        {currentProduct.length ? (
+          currentProduct.map((p) => (
             <Link key={p.id} to={`/details/${p.id}`}>
               <Card
                 image={p.image}
@@ -116,6 +127,12 @@ export const Cards = () => {
           </div>
         )}
       </div>
+      <Pagination
+        productsPerPage={productsPerPage}
+        products={products.length}
+        paginate={paginate}
+        currentPage={currentPage}
+      />
     </div>
   );
 };
