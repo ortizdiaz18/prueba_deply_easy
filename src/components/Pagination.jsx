@@ -3,12 +3,12 @@ import s from "../styles/Pagination.module.css";
 
 export function Pagination({
   productsPerPage,
-  product,
+  products,
   paginate,
   currentPage,
 }) {
   const pageNumbers = [];
-  for (let i = 1; i <= Math.ceil(product / productsPerPage); i++) {
+  for (let i = 1; i <= Math.ceil(products / productsPerPage); i++) {
     pageNumbers.push(i);
   }
   return (
