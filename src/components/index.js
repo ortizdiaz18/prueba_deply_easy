@@ -10,3 +10,4 @@ export * from "./SearchBar";
 export * from "./ResultSearch";
 export * from "./CreateProduct";
 export * from "./Profile"
+export * from "./CreateProfile"
