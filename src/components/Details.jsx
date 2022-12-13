@@ -91,15 +91,6 @@ export const Details = () => {
             </div>
             <br />
             <br />
-            {/* <h2>Categories</h2>
-            <div>
-              {detailProduct[0].category
-                ? detailProduct[0].category.map((c) => (
-                    <div key={c.id}>{c.name}</div>
-                  ))
-                : null}
-              <br />
-                </div> */}
           </div>
         ) : null}
         <div className={style.conteiner_buttons}>
