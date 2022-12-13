@@ -5,7 +5,7 @@ import axios from "axios";
 export const getProfileById = (id) => {
   return (dispatch) =>
     axios
-      .get(`http://localhost:3000/api/v1/profile/${id}`)
+      .get(`${import.meta.env.VITE_RUTA}/api/v1/profile/${id}`)
       .then((response) => {
         dispatch({
           type: types.GET_PROFILE_BY_ID,

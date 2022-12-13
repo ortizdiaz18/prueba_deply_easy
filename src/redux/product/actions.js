@@ -4,7 +4,7 @@ import axios from "axios";
 export const getProducts = () => {
   return (dispatch) =>
     axios
-      .get(`http://localhost:3000/api/v1/products`)
+      .get(`${import.meta.env.VITE_RUTA}/api/v1/products`)
       .then((response) => {
         dispatch({
           type: types.GET_PRODUCTS,
