@@ -108,18 +108,9 @@ export const Cards = () => {
         </select>
       </div>
       <br />
+
       <div>
-        {products.length && (
-          <Pagination
-            productsPerPage={productsPerPage}
-            products={products.length}
-            paginate={paginate}
-            currentPage={currentPage}
-          />
-        )}
-      </div>
-      <div>
-        {currentProduct.length > 0 ? (
+        {currentProduct.length ? (
           currentProduct.map((p) => (
             <Link key={p.id} to={`/details/${p.id}`}>
               <Card
@@ -136,6 +127,12 @@ export const Cards = () => {
           </div>
         )}
       </div>
+      <Pagination
+        productsPerPage={productsPerPage}
+        products={products.length}
+        paginate={paginate}
+        currentPage={currentPage}
+      />
     </div>
   );
 };
