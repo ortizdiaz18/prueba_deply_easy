@@ -15,7 +15,8 @@ export const GET_CATEGORIES = "GET_CATEGORIES";
 export const SORT_PRODUCTS_BY_PRICE = "SORT_PRODUCTS_BY_PRICE";
 export const GET_PROFILE_BY_ID= "GET_PROFILE_BY_ID";
 export const CREATE_PROFILE= "CREATE_PROFILE";
-
+export const ADD_PRODUCT_CART = "ADD_PRODUCT_CART";
+export const CLEAR_CART = "CLEAR_CART";
 //Users
 
 //Reservations
