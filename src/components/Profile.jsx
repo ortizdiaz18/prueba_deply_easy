@@ -16,7 +16,7 @@ export const Profile = () => {
   const { user, isAuthenticated, isLoading } = useAuth0();
   const [ventana, setVentana] = useState("pedidos");
   const dispatch = useDispatch();
-  const navigate =  useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -27,10 +27,12 @@ export const Profile = () => {
   const changePassword = () => {
     let options = {
       method: "POST",
-      url: `https://${import.meta.env.VITE_AUTH0_DOMAIN}/dbconnections/change_password`,
+      url: `https://${
+        import.meta.env.VITE_AUTH0_DOMAIN
+      }/dbconnections/change_password`,
       headers: { "content-type": "application/json" },
       data: {
-        client_id: import.meta.env.VITE_AUTH0_CLIENT_I,
+        client_id: import.meta.env.VITE_AUTH0_CLIENT_ID,
         email: user.email,
         connection: "Username-Password-Authentication",
       },
@@ -126,7 +128,10 @@ export const Profile = () => {
                       Te enviaremos un link al correo electronico donde podras
                       entrar a realizar el cambio de contraseña
                     </p>
-                    <button onClick={changePassword} className={profileStyle.buttonLink}>
+                    <button
+                      onClick={changePassword}
+                      className={profileStyle.buttonLink}
+                    >
                       Enviar Link
                     </button>
                   </div>
@@ -162,24 +167,24 @@ export const Profile = () => {
                 <button
                   className={profileStyle.buttons}
                   name="pedidos"
-                  onClick={(e) => setVentana(e.name)}
+                  onClick={() => setVentana("pedidos")}
                 >
                   Pedidos
                 </button>
                 <button
                   className={profileStyle.buttons}
                   name="reservas"
-                  onClick={(e) => setVentana(e.name)}
+                  onClick={() => setVentana("reservas")}
                 >
                   Reservas
                 </button>
                 <button
                   className={profileStyle.buttons}
                   name="reseñas"
-                  onClick={(e) => setVentana(e.name)}
+                  onClick={() => setVentana("reseñas")}
                 >
                   Reseñas
-                </button>
+                </button>{" "}
               </div>
               {ventana === "reservas" ? (
                 <div className={profileStyle.containerOptionsDiv}>
