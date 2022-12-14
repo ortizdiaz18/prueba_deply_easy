@@ -4,7 +4,7 @@ import axios from "axios";
 export const getProducts = () => {
   return (dispatch) =>
     axios
-      .get(`http://localhost:3000/api/v1/products`)
+      .get(`${import.meta.env.VITE_URL}/api/v1/products`)
       .then((response) => {
         dispatch({
           type: types.GET_PRODUCTS,
@@ -17,7 +17,7 @@ export const getProducts = () => {
 export const sortByTimePreparation = (time, category) => {
   return (dispatch) =>
     axios
-      .get(`http://localhost:3000/api/v1/products/filter/timePreparationOrder`)
+      .get(`${import.meta.env.VITE_URL}/api/v1/products/filter/timePreparationOrder`)
       .then((response) => {
         dispatch({
           type: types.SORT_BY_TIME_PREPARATION,
@@ -30,7 +30,7 @@ export const getProductByName = (name) => {
   console.log(name);
   return (dispatch) =>
     axios
-      .get(`http://localhost:3000/api/v1/products?name=${name}`)
+      .get(`${import.meta.env.VITE_URL}/api/v1/products?name=${name}`)
       .then((response) => {
         dispatch({
           type: types.GET_PRODUCTS_BY_NAME,
@@ -44,7 +44,7 @@ export const filterByCategory = (category) => {
   return (dispatch) =>
     axios
       .get(
-        `http://localhost:3000/api/v1/products/filter/filterByCategory?category=${category}`
+        `${import.meta.env.VITE_URL}/api/v1/products/filter/filterByCategory?category=${category}`
       )
       .then((response) => {
         dispatch({
@@ -58,7 +58,7 @@ export const filterByCategory = (category) => {
 export const sortProductsByPrice = (price, category) => {
   return (dispatch) =>
     axios
-      .get(`http://localhost:3000/api/v1/products/filter/priceOrder`)
+      .get(`${import.meta.env.VITE_URL}/api/v1/products/filter/priceOrder`)
       .then((response) => {
         dispatch({
           type: types.SORT_PRODUCTS_BY_PRICE,
@@ -72,7 +72,7 @@ export const sortProductsByPrice = (price, category) => {
 export const getProductById = (id) => {
   return (dispatch) =>
     axios
-      .get(`http://localhost:3000/api/v1/products/${id}`)
+      .get(`${import.meta.env.VITE_URL}/api/v1/products/${id}`)
       .then((response) => {
         dispatch({
           type: types.GET_PRODUCT_BY_ID,
@@ -105,7 +105,7 @@ export const clearCart = () => {
 export const deleteProduct = (id) => {
   return (dispatch) => {
     axios
-      .delete(`http://localhost:3000/api/v1/products/${id}`)
+      .delete(`${import.meta.env.VITE_URL}/api/v1/products/${id}`)
       .then((response) => {
         return {
           type: types.DELETE_PRODUCT,

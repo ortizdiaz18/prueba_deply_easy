@@ -100,7 +100,7 @@ export const CreateProduct = () => {
 
   const submit = (e) => {
     e.preventDefault();
-    fetch("http://localhost:3000/api/v1/products", {
+    fetch(`${import.meta.env.VITE_URL}/api/v1/products`, {
       method: "POST",
       body: JSON.stringify(data),
       headers: {
